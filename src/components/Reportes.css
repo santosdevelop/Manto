@@ -1,0 +1,132 @@
+/* Estilos generales del contenedor */
+.reportes-container {
+  padding: 20px;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.reportes-container h2 {
+  text-align: center;
+  color: #1e5631;
+  margin-bottom: 30px;
+  font-size: 2rem;
+}
+
+/* Selector de galpón */
+.galpon-selector-container {
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+.galpon-selector {
+  display: inline-block;
+  margin: 0 auto;
+  background: white;
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.galpon-selector label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: bold;
+  color: #1e5631;
+}
+
+.galpon-selector select {
+  padding: 10px 15px;
+  border-radius: 6px;
+  border: 1px solid #ddd;
+  background-color: white;
+  font-size: 1rem;
+  color: #333;
+  min-width: 250px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.galpon-selector select:hover {
+  border-color: #4CCD99;
+}
+
+.galpon-selector select:focus {
+  outline: none;
+  border-color: #4CCD99;
+  box-shadow: 0 0 0 2px rgba(76, 205, 153, 0.2);
+}
+
+.loading-indicator {
+  margin-top: 10px;
+  color: #4CCD99;
+  font-style: italic;
+}
+
+/* Contenedor de los gráficos */
+.graficos-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 25px;
+  justify-content: center;
+}
+
+/* Tarjeta de cada gráfico */
+.grafico-card {
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.grafico-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+}
+
+.grafico-card h3 {
+  text-align: center;
+  color: #4CCD99;
+  margin-bottom: 20px;
+  font-size: 1.3rem;
+}
+
+/* Contenedor del gráfico */
+.chart-container {
+  width: 100%;
+  height: 300px;
+  position: relative;
+  margin-top: 10px;
+}
+
+/* Estilos para estados de carga y error */
+.loading, .error {
+  text-align: center;
+  padding: 50px;
+  font-size: 18px;
+  color: #1e5631;
+}
+
+.error {
+  color: #e74c3c;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .graficos-container {
+    grid-template-columns: 1fr;
+  }
+  
+  .grafico-card {
+    max-width: 100%;
+  }
+  
+  .galpon-selector {
+    width: 100%;
+    padding: 10px;
+  }
+  
+  .galpon-selector select {
+    width: 100%;
+  }
+}

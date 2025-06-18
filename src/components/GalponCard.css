@@ -1,0 +1,754 @@
+/* ================ */
+/* Design Tokens */
+/* ================ */
+:root {
+  /* Color Palette */
+  --galpon-primary: #4f46e5;
+  --galpon-primary-dark: #4338ca;
+  --galpon-primary-light: #a5b4fc;
+  --galpon-primary-50: #eef2ff;
+  
+  --galpon-success: #16a34a;
+  --galpon-success-light: #dcfce7;
+  
+  --galpon-danger: #dc2626;
+  --galpon-danger-light: #fee2e2;
+  
+  --galpon-warning: #d97706;
+  --galpon-warning-light: #fef3c7;
+  
+  --galpon-info: #2563eb;
+  --galpon-info-light: #dbeafe;
+  
+  --galpon-muted: #64748b;
+  --galpon-muted-light: #f1f5f9;
+  
+  /* Semantic Colors */
+  --galpon-bg-light: #f8fafc;
+  --galpon-bg-hover: #f1f5f9;
+  --galpon-border: #e2e8f0;
+  --galpon-text-dark: #1e293b;
+  --galpon-text-medium: #334155;
+  
+  /* Spacing */
+  --galpon-space-xs: 0.25rem;
+  --galpon-space-sm: 0.5rem;
+  --galpon-space-md: 1rem;
+  --galpon-space-lg: 1.5rem;
+  --galpon-space-xl: 2rem;
+  
+  /* Border Radius */
+  --galpon-radius-sm: 0.25rem;
+  --galpon-radius-md: 0.5rem;
+  --galpon-radius-lg: 0.75rem;
+  --galpon-radius-xl: 1rem;
+  --galpon-radius-full: 9999px;
+  
+  /* Shadows */
+  --galpon-shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --galpon-shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  --galpon-shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+  --galpon-shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+  
+  /* Transitions */
+  --galpon-transition-fast: 0.15s ease;
+  --galpon-transition-normal: 0.3s ease;
+  --galpon-transition-slow: 0.5s ease;
+  
+  /* Z-index */
+  --galpon-z-modal: 1000;
+  --galpon-z-sticky: 10;
+}
+
+/* ================ */
+/* Base Styles */
+/* ================ */
+.galpon-card {
+  --card-padding: var(--galpon-space-lg);
+  
+  background-color: white;
+  border-radius: var(--galpon-radius-lg);
+  box-shadow: var(--galpon-shadow-sm);
+  transition: all var(--galpon-transition-normal);
+  padding: var(--card-padding);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 250px;
+  border: 1px solid var(--galpon-border);
+  position: relative;
+  overflow: hidden;
+}
+
+.galpon-card:hover {
+  box-shadow: var(--galpon-shadow-lg);
+  transform: translateY(-2px);
+  border-color: var(--galpon-primary-light);
+}
+
+/* Status Indicator */
+.galpon-status-indicator {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 4px;
+  height: 100%;
+  background-color: var(--galpon-primary);
+}
+
+/* Card Header */
+.galpon-header {
+  margin-bottom: var(--galpon-space-md);
+}
+
+.galpon-title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--galpon-text-dark);
+  margin-bottom: var(--galpon-space-sm);
+  line-height: 1.3;
+  position: relative;
+  padding-left: var(--galpon-space-md);
+}
+
+.galpon-title::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 8px;
+  height: 8px;
+  border-radius: var(--galpon-radius-full);
+  background-color: var(--galpon-primary);
+}
+
+.galpon-meta-container {
+  display: flex;
+  flex-direction: column;
+  gap: var(--galpon-space-xs);
+}
+
+.galpon-meta {
+  font-size: 0.875rem;
+  color: var(--galpon-muted);
+  display: flex;
+  align-items: center;
+  gap: var(--galpon-space-sm);
+  line-height: 1.4;
+}
+
+.galpon-meta-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+}
+
+/* Card Footer */
+.galpon-footer {
+  margin-top: auto;
+}
+
+/* ================ */
+/* Button Styles */
+/* ================ */
+.galpon-details-button {
+  --button-padding: 0.625rem 1.25rem;
+  
+  margin-top: auto;
+  background-color: var(--galpon-primary);
+  color: white;
+  font-weight: 500;
+  padding: var(--button-padding);
+  border-radius: var(--galpon-radius-md);
+  transition: all var(--galpon-transition-fast);
+  border: none;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--galpon-space-sm);
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+}
+
+.galpon-details-button::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    to right,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.2) 50%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  transform: translateX(-100%);
+  transition: transform 0.6s ease;
+}
+
+.galpon-details-button:hover {
+  background-color: var(--galpon-primary-dark);
+  transform: translateY(-1px);
+  box-shadow: var(--galpon-shadow-md);
+}
+
+.galpon-details-button:hover::after {
+  transform: translateX(100%);
+}
+
+.galpon-details-button:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+  transform: none !important;
+}
+
+.galpon-button-icon {
+  font-size: 0.9em;
+}
+
+/* Loading Spinner */
+.galpon-spinner {
+  width: 16px;
+  height: 16px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-radius: var(--galpon-radius-full);
+  border-top-color: white;
+  animation: galpon-spin 1s linear infinite;
+  margin-right: var(--galpon-space-xs);
+}
+
+@keyframes galpon-spin {
+  to { transform: rotate(360deg); }
+}
+
+/* ================ */
+/* Modal Styles */
+/* ================ */
+.galpon-modal-overlay {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: var(--galpon-z-modal);
+  backdrop-filter: blur(4px);
+  animation: galpon-fadeIn var(--galpon-transition-normal) ease-out;
+  padding: var(--galpon-space-md);
+}
+
+@keyframes galpon-fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.galpon-modal-container {
+  background: white;
+  border-radius: var(--galpon-radius-lg);
+  box-shadow: var(--galpon-shadow-xl);
+  width: min(90%, 900px);
+  max-height: 90vh;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  animation: galpon-slideIn var(--galpon-transition-normal) ease-out;
+}
+
+@keyframes galpon-slideIn {
+  from {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* Modal Header */
+.galpon-modal-header {
+  padding: var(--galpon-space-md) var(--galpon-space-lg);
+  background-color: var(--galpon-primary);
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+}
+
+.galpon-modal-header h2 {
+  margin: 0;
+  font-size: 1.25rem;
+  font-weight: 600;
+  line-height: 1.3;
+  padding-right: var(--galpon-space-md);
+  display: flex;
+  align-items: center;
+  gap: var(--galpon-space-sm);
+}
+
+.galpon-modal-title-icon {
+  font-size: 1.1em;
+}
+
+.galpon-modal-close-button {
+  background: rgba(255, 255, 255, 0.2);
+  border: none;
+  width: 32px;
+  height: 32px;
+  border-radius: var(--galpon-radius-full);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  cursor: pointer;
+  transition: all var(--galpon-transition-fast);
+  flex-shrink: 0;
+}
+
+.galpon-modal-close-button:hover {
+  background: rgba(255, 255, 255, 0.3);
+  transform: rotate(90deg);
+}
+
+/* Modal Content */
+.galpon-modal-content {
+  padding: var(--galpon-space-lg);
+  overflow-y: auto;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  gap: var(--galpon-space-lg);
+}
+
+/* Stats Container */
+.galpon-stats-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: var(--galpon-space-sm);
+}
+
+.galpon-stat-card {
+  background: white;
+  border-radius: var(--galpon-radius-md);
+  padding: var(--galpon-space-md);
+  box-shadow: var(--galpon-shadow-sm);
+  text-align: center;
+  border-top: 4px solid var(--galpon-primary);
+}
+
+.galpon-stat-number {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--galpon-text-dark);
+  display: block;
+  line-height: 1.2;
+}
+
+.galpon-stat-label {
+  font-size: 0.75rem;
+  color: var(--galpon-muted);
+  display: block;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-top: var(--galpon-space-xs);
+}
+
+/* Table Container */
+.galpon-table-container {
+  margin-bottom: 0;
+}
+
+.galpon-table-title {
+  font-size: 1.125rem;
+  color: var(--galpon-text-dark);
+  margin-bottom: var(--galpon-space-md);
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: var(--galpon-space-sm);
+}
+
+.galpon-table-title-icon {
+  font-size: 0.9em;
+  color: var(--galpon-primary);
+}
+
+.galpon-table-scroll-container {
+  max-height: 400px;
+  overflow-y: auto;
+  border: 1px solid var(--galpon-border);
+  border-radius: var(--galpon-radius-md);
+  scrollbar-width: thin;
+  scrollbar-color: var(--galpon-primary-light) transparent;
+}
+
+.galpon-table-scroll-container::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+.galpon-table-scroll-container::-webkit-scrollbar-thumb {
+  background-color: var(--galpon-primary-light);
+  border-radius: 4px;
+}
+
+.galpon-table-scroll-container::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+
+/* Table Styles */
+.galpon-maintenance-table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: white;
+  table-layout: fixed;
+  font-size: 0.875rem;
+}
+
+.galpon-maintenance-table thead {
+  position: sticky;
+  top: 0;
+  z-index: var(--galpon-z-sticky);
+}
+
+.galpon-maintenance-table th {
+  padding: var(--galpon-space-md);
+  text-align: left;
+  font-weight: 600;
+  color: white;
+  background-color: var(--galpon-primary);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  position: sticky;
+  top: 0;
+}
+
+.galpon-maintenance-table th:nth-child(1),
+.galpon-maintenance-table td:nth-child(1) {
+  width: 120px;
+  min-width: 120px;
+}
+
+.galpon-maintenance-table th:nth-child(2),
+.galpon-maintenance-table td:nth-child(2) {
+  width: auto;
+  min-width: 200px;
+}
+
+.galpon-maintenance-table th:nth-child(3),
+.galpon-maintenance-table td:nth-child(3) {
+  width: 120px;
+  min-width: 120px;
+  text-align: center;
+}
+
+.galpon-maintenance-table th:nth-child(4),
+.galpon-maintenance-table td:nth-child(4) {
+  width: 180px;
+  min-width: 180px;
+  text-align: center;
+}
+
+.galpon-maintenance-table td {
+  padding: var(--galpon-space-md);
+  border-bottom: 1px solid var(--galpon-border);
+  color: var(--galpon-text-medium);
+  vertical-align: middle;
+  line-height: 1.4;
+}
+
+.galpon-maintenance-table tr:last-child td {
+  border-bottom: none;
+}
+
+.galpon-maintenance-table tr:nth-child(even) {
+  background-color: var(--galpon-muted-light);
+}
+
+.galpon-maintenance-table tr:hover {
+  background-color: var(--galpon-bg-hover);
+}
+
+/* Table Cell Types */
+.galpon-type-cell {
+  white-space: nowrap;
+  overflow: hidden;
+  padding-left: var(--galpon-space-sm);
+  text-align: center;
+}
+
+.galpon-description-cell {
+  word-break: break-word;
+  padding-right: var(--galpon-space-sm);
+}
+
+.galpon-date-cell {
+  white-space: nowrap;
+  font-family: 'Courier New', monospace;
+  color: var(--galpon-muted);
+  font-size: 0.85rem;
+  text-align: center;
+  padding: var(--galpon-space-md) var(--galpon-space-sm);
+}
+
+.galpon-technician-cell {
+  text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  padding: var(--galpon-space-md) var(--galpon-space-sm);
+}
+
+.galpon-technician-icon {
+  color: var(--galpon-primary);
+  font-size: 0.9rem;
+  margin-right: var(--galpon-space-sm);
+  vertical-align: middle;
+}
+
+/* Status Badges */
+.galpon-maintenance-badge {
+  display: inline-block;
+  padding: var(--galpon-space-xs) var(--galpon-space-sm);
+  border-radius: var(--galpon-radius-full);
+  font-size: 0.75rem;
+  font-weight: 500;
+  text-transform: capitalize;
+  box-shadow: var(--galpon-shadow-sm);
+  white-space: nowrap;
+}
+
+.galpon-badge-preventivo {
+  background: var(--galpon-success-light);
+  color: var(--galpon-success);
+  border: 1px solid #86efac;
+}
+
+.galpon-badge-correctivo {
+  background: var(--galpon-danger-light);
+  color: var(--galpon-danger);
+  border: 1px solid #fca5a5;
+}
+
+.galpon-badge-pendiente {
+  background: var(--galpon-info-light);
+  color: var(--galpon-info);
+  border: 1px solid #93c5fd;
+}
+
+/* Technicians Section */
+.galpon-technicians-section {
+  padding: var(--galpon-space-md);
+  background: white;
+  border-radius: var(--galpon-radius-md);
+  border: 1px solid var(--galpon-border);
+}
+
+.galpon-section-title {
+  font-size: 1.125rem;
+  color: var(--galpon-text-dark);
+  margin-bottom: var(--galpon-space-md);
+  display: flex;
+  align-items: center;
+  gap: var(--galpon-space-sm);
+}
+
+.galpon-section-icon {
+  color: var(--galpon-primary);
+  font-size: 0.9em;
+}
+
+.galpon-technicians-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--galpon-space-sm);
+}
+
+.galpon-technician-tag {
+  padding: var(--galpon-space-xs) var(--galpon-space-sm);
+  background-color: var(--galpon-primary-50);
+  color: var(--galpon-primary);
+  border-radius: var(--galpon-radius-full);
+  font-size: 0.85rem;
+  display: inline-flex;
+  align-items: center;
+  gap: var(--galpon-space-sm);
+  white-space: nowrap;
+  transition: all var(--galpon-transition-fast);
+}
+
+.galpon-technician-tag:hover {
+  transform: translateY(-1px);
+  box-shadow: var(--galpon-shadow-sm);
+}
+
+.galpon-technician-tag-icon {
+  font-size: 0.8rem;
+}
+
+/* Empty States */
+.galpon-empty-state {
+  padding: var(--galpon-space-lg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--galpon-space-sm);
+  color: var(--galpon-muted);
+  background-color: var(--galpon-muted-light);
+  border-radius: var(--galpon-radius-md);
+  text-align: center;
+}
+
+.galpon-error-state {
+  padding: var(--galpon-space-lg);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--galpon-space-md);
+  color: var(--galpon-danger);
+  background-color: var(--galpon-danger-light);
+  border-radius: var(--galpon-radius-md);
+  text-align: center;
+}
+
+.galpon-retry-button {
+  background-color: var(--galpon-danger);
+  color: white;
+  border: none;
+  padding: var(--galpon-space-xs) var(--galpon-space-md);
+  border-radius: var(--galpon-radius-sm);
+  font-weight: 500;
+  cursor: pointer;
+  transition: all var(--galpon-transition-fast);
+}
+
+.galpon-retry-button:hover {
+  background-color: #b91c1c;
+  transform: translateY(-1px);
+}
+
+/* Modal Footer */
+.galpon-modal-footer {
+  padding: var(--galpon-space-md) var(--galpon-space-lg);
+  border-top: 1px solid var(--galpon-border);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.galpon-modal-footer-info {
+  font-size: 0.875rem;
+  color: var(--galpon-muted);
+}
+
+.galpon-last-maintenance {
+  display: flex;
+  align-items: center;
+  gap: var(--galpon-space-sm);
+}
+
+.galpon-modal-close-btn {
+  background-color: var(--galpon-primary);
+  color: white;
+  border: none;
+  padding: var(--galpon-space-sm) var(--galpon-space-md);
+  border-radius: var(--galpon-radius-md);
+  font-weight: 500;
+  cursor: pointer;
+  transition: all var(--galpon-transition-fast);
+  min-width: 100px;
+}
+
+.galpon-modal-close-btn:hover {
+  background-color: var(--galpon-primary-dark);
+  transform: translateY(-1px);
+  box-shadow: var(--galpon-shadow-md);
+}
+
+/* ================ */
+/* Responsive Design */
+/* ================ */
+@media (max-width: 768px) {
+  .galpon-card {
+    padding: var(--galpon-space-md);
+    min-height: auto;
+  }
+  
+  .galpon-modal-container {
+    width: 100%;
+    max-height: 100vh;
+    border-radius: 0;
+  }
+  
+  .galpon-table-scroll-container {
+    max-height: 50vh;
+  }
+  
+  .galpon-maintenance-table {
+    display: block;
+    overflow-x: auto;
+    white-space: nowrap;
+    table-layout: auto;
+  }
+  
+  .galpon-maintenance-table th,
+  .galpon-maintenance-table td {
+    min-width: 150px;
+    white-space: normal;
+    padding: var(--galpon-space-sm);
+  }
+  
+  .galpon-maintenance-table th:nth-child(2),
+  .galpon-maintenance-table td:nth-child(2) {
+    min-width: 250px;
+  }
+  
+  .galpon-technician-cell {
+    text-align: left;
+    padding: var(--galpon-space-sm);
+  }
+  
+  .galpon-technicians-list {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  .galpon-modal-content {
+    padding: var(--galpon-space-md);
+  }
+}
+
+@media (max-width: 480px) {
+  .galpon-modal-header h2 {
+    font-size: 1.1rem;
+  }
+  
+  .galpon-maintenance-table {
+    font-size: 0.8rem;
+  }
+  
+  .galpon-maintenance-table th,
+  .galpon-maintenance-table td {
+    padding: var(--galpon-space-sm);
+  }
+  
+  .galpon-technician-cell {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--galpon-space-xs);
+  }
+  
+  .galpon-stats-container {
+    grid-template-columns: 1fr 1fr;
+  }
+}

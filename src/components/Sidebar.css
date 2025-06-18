@@ -1,0 +1,274 @@
+/* Reset básico */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Sidebar principal */
+.sidebar {
+  width: 260px;
+  height: 100vh;
+  background-color: #1e5631;
+  color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 1000;
+  box-shadow: 2px 0 10px rgba(0, 0, 0, 0.15);
+  overflow-y: auto;
+  transition: transform 0.3s ease-in-out;
+}
+
+/* Sidebar en móviles */
+@media screen and (max-width: 768px) {
+  .sidebar {
+    transform: translateX(-100%);
+  }
+  
+  .sidebar.open {
+    transform: translateX(0);
+  }
+}
+
+/* Botón Hamburguesa */
+.hamburger-btn {
+  position: fixed;
+  top: 15px;
+  left: 15px;
+  z-index: 1100;
+  background: #1e5631;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 8px;
+  cursor: pointer;
+  display: none;
+  transition: all 0.3s ease;
+}
+
+.hamburger-btn:hover {
+  background: #276f3d;
+}
+
+@media screen and (max-width: 768px) {
+  .hamburger-btn {
+    display: block;
+  }
+}
+
+/* Overlay para móviles */
+.sidebar-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 999;
+}
+
+/* Sección de perfil */
+.profile-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 30px 20px;
+  margin-bottom: 10px;
+}
+
+.profile-image {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  overflow: hidden;
+  cursor: pointer;
+  border: 4px solid white;
+  background-color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease;
+  margin-bottom: 15px;
+}
+
+.profile-image:hover {
+  transform: scale(1.05);
+}
+
+.profile-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.profile-name {
+  margin-top: 10px;
+  font-weight: 600;
+  font-size: 1.1rem;
+  text-align: center;
+  color: #ffffff;
+}
+
+/* Separador */
+.separator {
+  border: none;
+  height: 1px;
+  background-color: rgba(255, 255, 255, 0.15);
+  margin: 10px 20px;
+}
+
+/* Títulos de sección */
+.section-title {
+  margin: 5px 20px 8px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  color: #c7f5dc;
+  letter-spacing: 0.5px;
+}
+
+/* Items del menú */
+.menu-item {
+  display: flex;
+  align-items: center;
+  padding: 12px 20px;
+  text-decoration: none;
+  color: #ffffff;
+  border-radius: 6px;
+  margin: 4px 12px;
+  transition: all 0.2s ease;
+}
+
+.menu-item:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.menu-icon {
+  margin-right: 12px;
+  stroke-width: 1.8;
+}
+
+.menu-text {
+  font-size: 0.95rem;
+  font-weight: 500;
+}
+
+/* Estilo especial para logout */
+.menu-item.logout {
+  margin-top: auto;
+  margin-bottom: 20px;
+  color: #ffdddd;
+}
+
+.menu-item.logout:hover {
+  background-color: rgba(255, 0, 0, 0.15);
+}
+
+/* Modal */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1100;
+}
+
+.modal-content {
+  background: white;
+  padding: 25px;
+  border-radius: 10px;
+  width: 90%;
+  max-width: 400px;
+  text-align: center;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.25);
+}
+
+.modal-content h3 {
+  margin-bottom: 15px;
+  font-size: 1.2rem;
+  color: #1e5631;
+}
+
+.modal-input {
+  margin: 15px 0;
+  padding: 10px;
+  width: 100%;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 0.95rem;
+}
+
+.modal-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 15px;
+}
+
+.modal-btn {
+  padding: 8px 16px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: background 0.2s ease;
+}
+
+.modal-btn.confirm {
+  background: #1e5631;
+  color: white;
+}
+
+.modal-btn.confirm:hover {
+  background: #276f3d;
+}
+
+.modal-btn.cancel {
+  background: #f0f0f0;
+  color: #333;
+}
+
+.modal-btn.cancel:hover {
+  background: #e0e0e0;
+}
+
+.success-message {
+  margin-top: 15px;
+  color: #28a745;
+  font-weight: 500;
+  font-size: 0.9rem;
+}
+
+/* Clase para el contenido principal */
+.main-content {
+  margin-left: 260px;
+  width: calc(100% - 260px);
+  min-height: 100vh;
+  padding: 20px;
+  transition: margin-left 0.3s ease-in-out;
+}
+
+/* Ajuste para móviles */
+@media screen and (max-width: 768px) {
+  .main-content {
+    margin-left: 0;
+    width: 100%;
+    padding-top: 70px; /* Espacio para el botón hamburguesa */
+  }
+  
+  .sidebar.open + .main-content {
+    margin-left: 260px;
+    width: calc(100% - 260px);
+    overflow: hidden;
+  }
+}
