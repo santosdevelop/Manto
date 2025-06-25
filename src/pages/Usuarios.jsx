@@ -70,14 +70,15 @@ const Usuarios = () => {
 
   // Color por rol
   const getRoleColor = useCallback((rol) => {
-    switch (rol?.toLowerCase()) {
-      case 'administrador': return 'role-admin';
-      case 'moderador': return 'role-moderator';
-      case 'técnico':
-      case 'tecnico': return 'role-technician';
-      default: return 'role-user';
-    }
-  }, []);
+  console.log(`Evaluando color para el rol: ${rol}`); // <- Cambio de prueba
+  switch (rol?.toLowerCase()) {
+    case 'administrador': return 'role-admin';
+    case 'moderador': return 'role-moderator';
+    case 'técnico':
+    case 'tecnico': return 'role-technician';
+    default: return 'role-user';
+  }
+}, []);
 
   // Obtener usuarios desde Firestore
   useEffect(() => {
@@ -380,7 +381,7 @@ const usuariosFiltrados = useMemo(() => {
         <div className="page-header">
           <h1 className="page-title">
             <FaUsers className="title-icon" />
-            Gestión de Usuarios
+            Usuarios
           </h1>
           <p className="page-subtitle">Administra los usuarios del sistema</p>
         </div>
@@ -508,7 +509,7 @@ const usuariosFiltrados = useMemo(() => {
                         <FaUsers className="empty-icon" />
                         <p>No se encontraron usuarios</p>
                         {searchTerm && (
-                          <small>Intenta con otros términos de búsqueda</small>
+                          <small>Intenta con usuarios existentes</small>
                         )}
                       </div>
                     </td>
