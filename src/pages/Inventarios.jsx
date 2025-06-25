@@ -754,7 +754,7 @@ const agregarCategoria = async () => {
             <FaSearch />
             <input
               type="text"
-              placeholder="Buscar por Kardex, nombre, categoría..."
+              placeholder="Buscar por Kardex, nombre, categoría, cantidad, Precio, Ubicacion, Estado, Acciones"
               value={searchTerm}
               onChange={(e) => {
                 setSearchTerm(e.target.value);
